@@ -73,15 +73,15 @@
 
 		if (totalReceived > 0) {
 			console.log();
-			toast('success', `${totalReceived} tokens received`, 'Success!');
+			toast('éxito', `${totalReceived} tokens recibidos`, 'Éxito!');
 		}
 
 		if (totalSpent > 0) {
-			toast('info', `${totalSpent} tokens were already redeemed`, 'Info');
+			toast('info', `Ya se han canjeado ${totalSpent} tokens`, 'Info');
 		}
 
 		if (hasError > 0) {
-			toast('warning', `${hasError} errors occurred when trying to redeem tokens`, 'Oops');
+			toast('aviso', `se han producido ${hasError} errores al intentar canjear tokens`, 'Ups');
 		}
 		isLoading = false;
 		nostrMessages.set(
@@ -120,11 +120,11 @@
 					{/if}
 				</th>
 				<th>
-					<p class="hidden lg:flex">Amount</p>
-					<p class="flex lg:hidden">Amt</p></th
+					<p class="hidden lg:flex">Cantidad</p>
+					<p class="flex lg:hidden">Ctd</p></th
 				>
-				<th>Date</th>
-				<th class="w-full">From</th>
+				<th>Fecha</th>
+				<th class="w-full">De</th>
 			</tr>
 		</thead>
 		<tbody class="max-h-1 overflow-y-scroll scrollbar-hide">
@@ -136,14 +136,14 @@
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<tr class="">
 				<td colspan="2" class="cursor-pointer w-5 hover:bg-base-200" on:click={loadMore}>
-					load more
+					cargar más
 				</td>
 				<td
 					colspan="2"
 					class="cursor-pointer w-full hover:bg-base-200"
 					on:click={() => (page = 999999)}
 				>
-					load all
+					cargar todo
 				</td>
 			</tr>
 		</tbody>

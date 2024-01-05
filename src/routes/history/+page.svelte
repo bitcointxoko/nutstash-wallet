@@ -21,7 +21,7 @@
 					/>
 				</svg>
 			</a>
-			<p class="text-xl font-bold">History</p>
+			<p class="text-xl font-bold">Historial</p>
 			<div class="btn-square btn invisible" />
 		</div>
 		<HistoryTable />

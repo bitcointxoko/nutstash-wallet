@@ -32,7 +32,7 @@
 		const allMints = $mints;
 		allMints.splice(mintIndex, 1);
 		mints.set([mint, ...allMints]);
-		toast('info', mint.mintURL + ' is now the default mint', 'Default mint updated');
+		toast('info', mint.mintURL + ' es ahora el mint por defecto', 'Mint por defecto actualizado');
 	};
 
 	const reloadKeys = async () => {
@@ -46,10 +46,10 @@
 			let keysets = await cashuMint.getKeySets();
 			mintsClone[mintIndex].keysets = keysets.keysets;
 			mints.set(mintsClone);
-			toast('success', 'Mint keys have been updated', 'Done');
+			toast('éxito', 'Se han actualizado las claves del Mint', 'Listo');
 		} catch (error) {
 			console.log(error);
-			toast('error', 'Could not update mint keys', 'Error when loading keys');
+			toast('error', 'No se han podido actualizar las claves mint', 'Error al cargar las claves');
 		} finally {
 			isReloadingKeys = false;
 		}
@@ -73,11 +73,11 @@
 					document.body.removeChild(textarea);
 					toast(
 						'info',
-						`Sharable link for ...${mint.mintURL.substring(
+						`Enlace compartible para ...${mint.mintURL.substring(
 							mint.mintURL.length - 10,
 							mint.mintURL.length
-						)} has been copied to clipboard`,
-						'Copied!'
+						)} se ha copiado en el portapapeles`,
+						'Copiado!'
 					);
 				}
 			}
@@ -209,17 +209,17 @@
 <input type="checkbox" id="remove-mint-modal-{mintIndex}" class="modal-toggle" />
 <div class="modal">
 	<div class="modal-box">
-		<h3 class="text-lg font-bold">Remove Mint</h3>
+		<h3 class="text-lg font-bold">Quitar Mint</h3>
 		<p class="overflow-clip text-ellipsis">
 			{mint.mintURL}
 		</p>
 		<p class="py-4">
-			Are you sure you want to remove this mint? You will keep the tokens associated with the mint,
-			but you will not be able to redeem them until you re-add the mint.
+			¿Estás seguro de que quieres eliminar este mint? Conservarás los tokens asociados al mint,
+			pero no podrás canjearlos hasta que vuelvas a añadir el mint.
 		</p>
 		<div class="modal-action">
-			<label for="remove-mint-modal-{mintIndex}" class="btn btn-outline">cancel</label>
-			<button on:click={removeMint} class="btn btn-error">Delete</button>
+			<label for="remove-mint-modal-{mintIndex}" class="btn btn-outline">cancelar</label>
+			<button on:click={removeMint} class="btn btn-error">Eliminar</button>
 		</div>
 	</div>
 </div>

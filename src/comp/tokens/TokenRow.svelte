@@ -22,7 +22,7 @@
 	const recycleToken = async () => {
 		const mint = getMintForToken(token, $mints);
 		if (!mint) {
-			toast('warning', 'Add the mint first', 'Cannot recycle token!');
+			toast('aviso', 'Añade primero el mint', 'No se puede reciclar el token!');
 			return;
 		}
 		const cashuMint: CashuMint = new CashuMint(mint.mintURL);
@@ -51,12 +51,12 @@
 				tokenStore.update((state) => getTokenSubset(state, [token]));
 				//add new token
 				tokenStore.update((state) => [...proofs, ...state]);
-				toast('success', 'Token has been recycled.', 'Success!');
+				toast('éxito', 'El token ha sido reciclada.', 'Éxito!');
 				isLoading = false;
 			} catch (e) {
 				isLoading = false;
 				console.error(e);
-				toast('error', 'could not recycle token', 'an Error occurred');
+				toast('error', 'no se ha podido reciclar el token', 'se ha producido un error');
 				if (browser) {
 					// @ts-expect-error
 					document.getElementById('token-item-modal-' + i).checked = true;
@@ -65,7 +65,7 @@
 		} catch (e) {
 			isLoading = false;
 			console.error(e);
-			toast('error', 'You might have lost your connection to the mint', 'an Error occurred');
+			toast('error', 'Puede que hayas perdido la conexión con el mint', 'se ha producido un error');
 		}
 	};
 	const deleteToken = () => {
@@ -78,7 +78,7 @@
 	const checkTokenSpent = async () => {
 		const mint = getMintForToken(token, $mints);
 		if (!mint) {
-			toast('warining', 'Add the mint first', 'Cannot check token!');
+			toast('aviso', 'Añade primero el mint', 'No se puede comprobar el token!');
 			return;
 		}
 		isLoading = true;
@@ -98,20 +98,20 @@
 					}
 					hasBeenReceived = true;
 					toast(
-						'success',
-						'The token has been removed from pending tokens',
-						'This token has been redeemed'
+						'éxito',
+						'El token ha sido eliminado de los tokens pendientes',
+						'Este token ha sido canjeado'
 					);
 					return false;
 				})
 			);
 			if (!hasBeenReceived) {
-				toast('info', 'The token is still pending', 'This token has not been received yet');
+				toast('info', 'El token sigue pendiente', 'Este token aún no se ha recibido');
 			}
 			isLoading = false;
 		} catch (e) {
 			console.error(e);
-			toast('error', 'Could not check pending token', 'Error');
+			toast('error', 'No se ha podido comprobar el token pendiente', 'Error');
 			throw new Error('could not check pending tokens');
 		}
 	};

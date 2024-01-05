@@ -16,10 +16,10 @@
 			<tr>
 				<th />
 				<th>
-					<p class="hidden lg:flex">Amount</p>
-					<p class="flex lg:hidden">Amt</p></th
+					<p class="hidden lg:flex">Cantidad</p>
+					<p class="flex lg:hidden">Ctd</p></th
 				>
-				<th>Date</th>
+				<th>Fecha</th>
 				<th class="w-full">Token</th>
 			</tr>
 		</thead>
@@ -30,14 +30,14 @@
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<tr class="">
 				<td colspan="2" class="cursor-pointer w-5 hover:bg-base-200" on:click={loadMore}>
-					load more
+					cargar más
 				</td>
 				<td
 					colspan="2"
 					class="cursor-pointer w-full hover:bg-base-200"
 					on:click={() => (page = 999999)}
 				>
-					load all
+					cargar todo
 				</td>
 			</tr>
 		</tbody>

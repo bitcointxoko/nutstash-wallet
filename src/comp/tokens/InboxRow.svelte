@@ -48,7 +48,7 @@
 		const mint = new CashuMint(nostrMessage.token.token[0].mint);
 		try {
 			if ($mints.filter((m) => m.mintURL === mint.mintUrl).length > 0) {
-				toast('warning', 'this mint has already been added.', "Didn't add mint!");
+				toast('aviso', 'este mint ya ha sido añadido.', "No añadió mint!");
 				return;
 			}
 			isLoadingMint = true;
@@ -56,7 +56,7 @@
 			const keys = await mint.getKeys();
 
 			if (!validateMintKeys(keys)) {
-				toast('error', 'the keys from that mint are invalid', 'mint could not be added');
+				toast('error', 'las claves de ese mint no son válidas', 'no se pudo añadir el mint');
 				return;
 			}
 
@@ -68,13 +68,13 @@
 			};
 
 			mints.update((state) => [storeMint, ...state]);
-			toast('success', 'Mint has been added', 'Success');
+			toast('éxito', 'Se ha añadido el mint', 'Éxito');
 			hasMint = true;
 		} catch {
 			toast(
 				'error',
-				'keys could not be loaded from:' + mint.mintUrl + '/keys',
-				'Could not add mint.'
+				'no se han podido cargar las claves desde:' + mint.mintUrl + '/keys',
+				'No se puede añadir el mint.'
 			);
 			throw new Error('Could not add Mint.');
 		} finally {
@@ -86,14 +86,14 @@
 		try {
 			const mint = getMintForToken(nostrMessage.token.token[0].proofs[0], $mints);
 			if (!mint) {
-				toast('warning', 'This token is from an unknown mint.', 'Token could not be added');
+				toast('aviso', 'Este token es de un mint desconocido.', 'No se ha podido añadir el token');
 				return;
 			}
 			if (!mint.isAdded) {
 				toast(
-					'warning',
-					'This token is from a mint you have not added yet.',
-					'Token could not be added'
+					'aviso',
+					'Este token es de un mint que aún no has añadido.',
+					'No se ha podido añadir el token'
 				);
 				return;
 			}
@@ -138,10 +138,10 @@
 			if (tokensWithErrors) {
 				throw new Error('Not all tokens could be redeemed');
 			}
-			toast('success', 'the Tokens have been successfully received', 'Success!');
+			toast('éxito', 'los tokens se han recibido correctamente', 'Éxito!');
 		} catch (e) {
 			console.error(e);
-			toast('error', 'The Tokens could not be added to your Wallet.', 'Error!');
+			toast('error', 'No se han podido añadir los tokens a tu billetera.', 'Error!');
 		}
 		if (browser) {
 			// @ts-expect-error
@@ -235,12 +235,12 @@
 <div class="modal">
 	<div class="modal-box">
 		<div class="flex flex-col items-start">
-			<p class="font-bold text-xl">You received Tokens over nostr</p>
+			<p class="font-bold text-xl">Has recibido tokens sobre nostr</p>
 			{#if !nostrMessage.isAccepted}
-				<p class="">Click Accept to add the Tokens to your Wallet</p>
+				<p class="">Haz clic en Aceptar para añadir los tokens a tu billetera.</p>
 			{/if}
 			<div class="grid grid-cols-5">
-				<p class="font-bold">Amount:</p>
+				<p class="font-bold">Cantidad:</p>
 				<p class="col-span-4">
 					{getAmountForTokenSet(nostrMessage?.token?.token[0]?.proofs) ?? ''}
 				</p>
@@ -248,7 +248,7 @@
 				<p class="col-span-4">
 					{nostrMessage.token.token[0].mint}
 				</p>
-				<p class="font-bold">From:</p>
+				<p class="font-bold">De:</p>
 				<div class="flex col-span-4 items-center gap-2 overflow-clip">
 					{#if !$contacts.map((c) => c.pubkey).includes(nostrMessage.event.pubkey)}
 						<button class="w-4 h-4" on:click={() => (showAdd = !showAdd)}>
@@ -270,9 +270,9 @@
 					{/if}
 					{#if showAdd}
 						<input type="text" class="input-xs input input-primary" bind:value={contactName} />
-						<button class="btn-xs btn-success rounded-md text-xs" on:click={addContact}>add</button>
+						<button class="btn-xs btn-success rounded-md text-xs" on:click={addContact}>añadir</button>
 						<button class="btn-xs btn-square rounded-md text-xs" on:click={() => (showAdd = false)}
-							>cancel</button
+							>cancelar</button
 						>
 					{:else}
 						<div class="badge badge-info gap-2">
@@ -293,15 +293,15 @@
 			{#if isLoading}
 				<LoadingCenter />
 			{:else}
-				<label for="nostr-receive-{i}" class="btn">close</label>
+				<label for="nostr-receive-{i}" class="btn">cerrar</label>
 				{#if !nostrMessage.isAccepted}
-					<button on:click={rejectToken} class="btn btn-warning">Reject</button>
+					<button on:click={rejectToken} class="btn btn-warning">Rechazar</button>
 					{#if hasMint}
-						<button on:click={acceptToken} class="btn btn-success">Accept</button>
+						<button on:click={acceptToken} class="btn btn-success">Aceptar</button>
 					{:else if isLoadingMint}
 						<button class="btn btn-disabled btn-square loading" />
 					{:else}
-						<button on:click={addMint} class="btn btn-success">Trust Mint</button>
+						<button on:click={addMint} class="btn btn-success">Confiar en el Mint</button>
 					{/if}
 				{/if}
 			{/if}

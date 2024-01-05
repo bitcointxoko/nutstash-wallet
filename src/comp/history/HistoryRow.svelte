@@ -52,7 +52,7 @@
 			<pre><code>{JSON.stringify(historyItem.data, undefined, 4)}</code></pre>
 		</div>
 		<div class="modal-action">
-			<label for="history-item-{i}" class="btn">close</label>
+			<label for="history-item-{i}" class="btn">cerrar</label>
 		</div>
 	</div>
 </div>

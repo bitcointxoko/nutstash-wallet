@@ -60,7 +60,7 @@
 						/>
 					</svg>
 				</label>
-				<h2 class="font-bold text-xl">Scan a Lightning Invoice</h2>
+				<h2 class="font-bold text-xl">Escanear una factura Lightning</h2>
 				<div class="btn-square invisible" />
 			</div>
 			<div class="w-full">

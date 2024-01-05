@@ -19,12 +19,12 @@
 		if (!$useExternalNostrKey && !$nostrPubKey) {
 			return;
 		}
-		toast('info', 'restarting nostr shortly...', 'nostr keys changed');
+		toast('info', 'reiniciando nostr en breve...', 'las claves nostr se han cambiado');
 		setTimeout(() => {
 			useNostr.update((state) => !state);
 			setTimeout(() => {
 				useNostr.update((state) => !state);
-				toast('success', 'nostr has restarted', 'Done!');
+				toast('éxito', 'nostr se ha reiniciado', 'Hecho!');
 			}, 500);
 		}, 2000);
 	};
@@ -34,8 +34,8 @@
 			let input = document.getElementById('nostr-pubkey-input');
 			// @ts-expect-error
 			input.select();
-			document.execCommand('copy');
-			toast('info', 'Public Key has been copied to clipboard.', 'Copied!');
+			document.execCommand('copiar');
+			toast('info', 'La clave pública se ha copiado en el portapapeles.', 'Copiado!');
 		}
 	};
 </script>
@@ -51,7 +51,7 @@
 {#if $useNostr}
 	<NostrRelaysConfig />
 	<div class="col-span-1">
-		<label for="delete-history-button">Use external Key (nos2x, etc...)</label>
+		<label for="delete-history-button">Usar clave externa (nos2x, etc...)</label>
 	</div>
 
 	<div class="col-span-4 flex gap-2">
@@ -77,7 +77,7 @@
 						d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
 					/>
 				</svg>
-				<p>no extension found</p>
+				<p>no se ha encontrado la extensión</p>
 			</div>
 		{/if}
 	</div>
@@ -99,19 +99,18 @@
 				/>
 			</svg>
 			<p>
-				Please don't paste your nostr keys here. Use your keys with an extension like nos2x or
-				generate throwaway keys.
+				Por favor, no pegues aquí tus claves nostr. Utiliza tus claves con una extensión como nos2x o genera claves desechables.
 			</p>
 		</div>
 		<div class="col-span-1">
-			<label for="delete-history-button">Edit Nostr Keys</label>
+			<label for="delete-history-button">Editar claves Nostr</label>
 		</div>
 
 		<div class="col-span-4">
 			<input type="checkbox" class="toggle toggle-info" bind:checked={isEditNostr} />
 		</div>
 		<div class="col-span-1">
-			<label for="delete-history-button">Nostr Private Key</label>
+			<label for="delete-history-button">Clave Privada Nostr</label>
 		</div>
 
 		<div class="col-span-4 flex gap-2">
@@ -145,7 +144,7 @@
 			</div>
 		</div>
 		<div class="col-span-1">
-			<label for="delete-history-button">Nostr Public Key</label>
+			<label for="delete-history-button">Clave Pública Nostr</label>
 		</div>
 
 		<div class="col-span-4 flex gap-2 w-full">

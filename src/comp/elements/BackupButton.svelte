@@ -15,4 +15,4 @@
 	}
 </script>
 
-<button class="btn btn-primary" on:click={backupTokens}> Backup Tokens </button>
+<button class="btn btn-primary" on:click={backupTokens}> Hacer Copia de Seguridad </button>

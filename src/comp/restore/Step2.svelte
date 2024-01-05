@@ -16,7 +16,7 @@
 	};
 
 	const handleDropRejected = () => {
-		toast('warning', 'Make sure to use a nutstash_backup.json file', 'Could not load backup!');
+		toast('aviso', 'Asegúrate de usar un archivo nutstash_backup.json', 'No se ha podido cargar la copia de seguridad!');
 	};
 
 	const handleDropAccepted = async (file) => {
@@ -24,7 +24,7 @@
 			isLoading = true;
 			await readBackupFileToObject(file);
 			backupFileName = file.detail.acceptedFiles[0].path;
-			toast('success', 'Backup file has ben successfully loaded into nutstash', 'Success!');
+			toast('éxito', 'El archivo de copia de seguridad se ha cargado correctamente en nutstash', 'Éxito!');
 		} catch (error) {
 			handleDropRejected();
 		} finally {
@@ -77,7 +77,7 @@
 			{backupFileName}
 		</p>
 	{:else}
-		<p class="text-lg font-bold">Drop the nutstash_backup.json in the box below</p>
+		<p class="text-lg font-bold">Suelta nutstash_backup.json en el cuadro de abajo.</p>
 		<Dropzone
 			accept={'application/json'}
 			multiple={false}

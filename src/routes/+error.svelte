@@ -8,7 +8,7 @@
 	<h1>{$page.status} {$page.error?.message}</h1>
 
 	{#if $page.status === 500}
-		An error occured.
+		Ha ocurrido un error.
 		<ResetHistoryButton />
 		<BackupButton />
 	{/if}

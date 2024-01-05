@@ -69,9 +69,9 @@
 							if (isFirst) {
 								isFirst = false;
 								toast(
-									'warning',
-									'The spent token has been removed from the wallet',
-									'Some token in your wallet was already spent.'
+									'aviso',
+									'El token gastado ha sido retirado de la billetera',
+									'Algún token de tu billetera ya estaba gastada.'
 								);
 							}
 							return false;
@@ -89,8 +89,8 @@
 								isFirstPending = false;
 								toast(
 									'info',
-									'The tokens you have sent are no longer pending',
-									'Tokens you have sent have been received.'
+									'Los tokens que has enviado ya no están pendientes',
+									'Los tokens que has enviado se han recibido.'
 								);
 							}
 							return false;
@@ -108,7 +108,7 @@
 				}
 			} catch (e) {
 				console.log(e);
-				toast('error', 'Mint: ' + mint.mintURL, 'There was a problem when syncing with a mint.');
+				toast('error', 'Mint: ' + mint.mintURL, 'Había un problema al sincronizar con un mint.');
 			}
 			isChecking = false;
 		});
@@ -148,7 +148,7 @@
 						</button>
 					{/if}
 					<p class="text-md">
-						(pending
+						(pendiente
 						{$pendingTokens.reduce((count, t) => {
 							return count + t.amount;
 						}, 0) ?? 0})
@@ -159,7 +159,7 @@
 			</div>
 			{#if $mints.filter((m) => m.isAdded).length === 0}
 				<button class="btn btn-warning btn-disabled"
-					>You have to be connected to a mint to send and receive Tokens.</button
+					>Tienes que estar conectado a un Mint para enviar y recibir Tokens.</button
 				>
 			{:else}
 				<div class="flex flex-col gap-4">
@@ -184,7 +184,7 @@
 									d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
 								/>
 							</svg>
-							<p>receive</p>
+							<p>recibir</p>
 						</button>
 						<button
 							class="btn btn-primary flex gap-1 items-center"
@@ -206,7 +206,7 @@
 									d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
 								/>
 							</svg>
-							<p>send</p>
+							<p>enviar</p>
 						</button>
 					</div>
 					<div class="flex gap-1 w-full">
@@ -228,7 +228,7 @@
 									d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
 								/>
 							</svg>
-							pay</button
+							pagar</button
 						>
 						<button class=" btn  btn-square btn-warning" on:click={scanPay}>
 							<svg

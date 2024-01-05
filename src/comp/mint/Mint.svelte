@@ -40,7 +40,7 @@
 		const mint = new CashuMint(mintURL);
 		try {
 			if ($mints.filter((m) => m.mintURL === mint.mintUrl).length > 0) {
-				toast('warning', 'this mint has already been added.', "Didn't add mint!");
+				toast('aviso', 'este mint ya ha sido añadido.', "No añadió mint!");
 				return;
 			}
 			isLoading = true;
@@ -48,7 +48,7 @@
 			const keys = await mint.getKeys();
 
 			if (!validateMintKeys(keys)) {
-				toast('error', 'the keys from that mint are invalid', 'mint could not be added');
+				toast('error', 'las claves de ese mint no son válidas', 'no se pudo añadir el mint');
 				return;
 			}
 
@@ -60,12 +60,12 @@
 			};
 
 			mints.update((state) => [...state, storeMint]);
-			toast('success', 'Mint has been added', 'Success');
+			toast('éxito', 'Se ha añadido el mint', 'Éxito!');
 		} catch {
 			toast(
 				'error',
-				'keys could not be loaded from:' + mint.mintUrl + '/keys',
-				'Could not add mint.'
+				'no se han podido cargar las claves desde:' + mint.mintUrl + '/keys',
+				'No se puede añadir el mint.'
 			);
 			throw new Error('Could not add Mint.');
 		} finally {
@@ -82,10 +82,10 @@
 				<thead>
 					<tr>
 						<th class="w-full">Mint</th>
-						<th>Actions</th>
+						<th>Acciones</th>
 						<th>
-							<p class="hidden lg:flex">Balance</p>
-							<p class="flex lg:hidden">Amt</p>
+							<p class="hidden lg:flex">Saldo</p>
+							<p class="flex lg:hidden">Ctd</p>
 						</th>
 						<th />
 					</tr>
@@ -93,7 +93,7 @@
 				<tbody>
 					{#if $mints.length === 0}
 						<tr class="hover">
-							<td colspan="4"> no mints added so far. </td>
+							<td colspan="4"> aún no se han añadido mints. </td>
 						</tr>
 					{/if}
 					{#each $mints as mint, mintIndex}
@@ -107,7 +107,7 @@
 		{#if $mints.filter((m) => m.isAdded).length > 1}
 			<div class="flex w-full items-center justify-center">
 				<button class="btn btn-lg btn-info flex gap-2" on:click={() => (active = 'swap')}>
-					<p>Inter-mint Swap</p>
+					<p>Intercambio entre mints</p>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -126,7 +126,6 @@
 			</div>
 		{/if}
 		<div class="pt-5">
-			<p class="text-xl font-bold">Add a new Mint:</p>
 		</div>
 		{#if $mints.filter((m) => !m.isAdded).length > 0}
 			<div class="max-h-56">
@@ -151,7 +150,7 @@
 
 		<div class="grid grid-cols-5 gap-2">
 			<div class="col-span-5 grid grid-cols-5 items-center">
-				<label for="mint-url-input"> Mint Host: </label>
+				<label for="mint-url-input"> Alojamiento Mint: </label>
 				<input
 					id="mint-url-input"
 					type="text"
@@ -168,7 +167,7 @@
 						addMint();
 					}}
 				>
-					Add Mint
+					Añadir Mint
 					{#if isAddMintPing}
 						<span class="flex h-3 w-3">
 							<div

@@ -63,11 +63,11 @@
 		}
 
 		if (amountToSend <= 0) {
-			toast('warning', 'amount must be larger than 0', 'Could not send');
+			toast('aviso', 'la cantidad debe ser superior a 0', 'No se ha podido enviar');
 			return;
 		}
 		if (amountToSend > getAmountForTokenSet(tokensToSend)) {
-			toast('warning', 'not enough funds', 'Could not Send');
+			toast('aviso', 'no hay fondos suficientes', 'No se ha podido enviar');
 			isLoading = false;
 			return;
 		}
@@ -108,11 +108,11 @@
 				},
 				...state
 			]);
-			toast('success', 'Copy the token and send it to someone', 'Sendable Token created.');
+			toast('éxito', 'Copia el token y envíaselo a alguien', 'Token enviable creado.');
 			isLoading = false;
 		} catch {
 			resetState();
-			toast('error', 'Sendable Token could not be created', 'Error when creating Token');
+			toast('error', 'No se ha podido crear el token enviable', 'Error al crear Token');
 			throw new Error('Error creating sendable token');
 		}
 	};
@@ -124,7 +124,7 @@
 			input.select();
 			document.execCommand('copy');
 			hasBeenCopied = true;
-			toast('info', 'Token has been copied to clipboard.', 'Copied!');
+			toast('info', 'El token se ha copiado en el portapapeles.', 'Copiado!');
 		}
 	};
 
@@ -186,11 +186,11 @@
 					$nostrRelays.map((r) => r.url)
 				);
 			}
-			toast('info', 'The Token is being sent over nostr', 'Sent!');
+			toast('info', 'El token se está enviando por nostr', 'Enviado!');
 			resetState();
 		} catch (e) {
 			console.error(e);
-			toast('error', 'The Token could not be sent over nostr', 'Error:');
+			toast('error', 'El token no se ha podido enviar por nostr', 'Error:');
 		} finally {
 			nostrSendLoading = false;
 		}
@@ -215,8 +215,8 @@
 				</div> -->
 		<div class="flex flex-col gap-2">
 			<div class="text-center">
-				<p class="text-xl font-bold text-success">Tokens are ready to be sent!</p>
-				<p class="font-bold">Copy the new token and send it to to someone!</p>
+				<p class="text-xl font-bold text-success">Los tokens están listos para ser enviados!</p>
+				<p class="font-bold">Copia el nuevo token y envíaselo a alguien!</p>
 			</div>
 			<div class="flex gap-2">
 				<input
@@ -245,12 +245,12 @@
 			</div>
 		</div>
 		<label class="cursor-pointer label flex justify-start gap-3">
-			<span class="label-text">Send as link</span>
+			<span class="label-text">Enviar como enlace</span>
 			<input type="checkbox" class="toggle toggle-primary" bind:checked={sendAsLink} />
 		</label>
 		<div class="pt-2 flex flex-col gap-2 items-center w-full">
 			{#if $useNostr}
-				<p class="font-bold">Send via Nostr:</p>
+				<p class="font-bold">Enviar a través Nostr:</p>
 				<div class="w-full flex items-center gap-2">
 					<input
 						type="text"
@@ -307,15 +307,15 @@
 							d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
 						/>
 					</svg>
-					Send over Nostr</button
+					Enviar a través de Nostr</button
 				>
 			{/if}
 		{/if}
 	</div>
 {:else}
 	<div class=" flex flex-col gap-2">
-		<p class="font-bold text-xl">Send Tokens</p>
-		<p>Create a sendable Cashu Token.</p>
+		<p class="font-bold text-xl">Enviar Tokens</p>
+		<p>Crear un Token Cashu enviable.</p>
 		<div class="grid grid-cols-5 items-center">
 			<div class="col-span-2">
 				<label for="mint-send-dropdown">
@@ -355,11 +355,11 @@
 			{/if}
 		</div>
 		<div class="grid grid-cols-5">
-			<p class="font-bold col-span-2">Available:</p>
+			<p class="font-bold col-span-2">Disponible:</p>
 			<p class="col-span-3">{getAmountForTokenSet(tokensForMint)} sats</p>
 		</div>
 		<div class="grid grid-cols-5 items-center">
-			<p class="font-bold col-span-2">Amount:</p>
+			<p class="font-bold col-span-2">Cantidad:</p>
 			<input
 				type="number"
 				name=""
@@ -379,7 +379,7 @@
 				class="btn {isCoinSelection && getAmountForTokenSet(selectedTokens) < amountToSend
 					? 'btn-disabled'
 					: 'btn-success'}"
-				on:click={send}>send</button
+				on:click={send}>enviar</button
 			>
 		</div>
 	</div>

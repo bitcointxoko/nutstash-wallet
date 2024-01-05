@@ -14,7 +14,7 @@
 <div class="flex flex-col gap-2 ">
 	<label class="label cursor-pointer p-0">
 		<div class="flex gap-1 items-center">
-			<span class="label-text font-bold">Use coin selection</span>
+			<span class="label-text font-bold">Utilizar la selección de monedas</span>
 			<input type="checkbox" bind:checked={isCoinSelection} class="checkbox checkbox-primary" />
 		</div>
 	</label>
@@ -22,12 +22,12 @@
 		<AvailableTokensTable {mint} bind:selectedTokens />
 		<div class="flex gap-2 items-center">
 			<div class="grid grid-cols-3 w-full">
-				<span class="font-bold"> Amount selected: </span>
+				<span class="font-bold"> Cantidad seleccionada: </span>
 				<span class="col-span-2">
 					{getAmountForTokenSet(selectedTokens)} / {amount ?? 0} sats
 				</span>
 				{#if getAmountForTokenSet(selectedTokens) - amount > 0}
-					<span class="font-bold"> Change: </span>
+					<span class="font-bold"> Cambio: </span>
 					<span class="col-span-2">
 						{getAmountForTokenSet(selectedTokens) - amount} sats
 					</span>

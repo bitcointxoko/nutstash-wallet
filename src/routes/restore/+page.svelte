@@ -36,12 +36,12 @@
 
 <div class="flex flex-col m-2 gap-2">
 	<div class="w-full flex">
-		<a class="btn" href="/"> Abort </a>
+		<a class="btn" href="/"> Abortar </a>
 		<ul class="steps w-full">
-			<li class="step {step > 0 ? 'step-primary' : ''}">Start</li>
-			<li class="step {step > 1 ? 'step-primary' : ''}">File</li>
-			<li class="step {step > 2 ? 'step-primary' : ''}">Restore</li>
-			<li class="step {step > 3 ? 'step-primary' : ''}">Done</li>
+			<li class="step {step > 0 ? 'step-primary' : ''}">Empezar</li>
+			<li class="step {step > 1 ? 'step-primary' : ''}">Archivo</li>
+			<li class="step {step > 2 ? 'step-primary' : ''}">Restaurar</li>
+			<li class="step {step > 3 ? 'step-primary' : ''}">Listo</li>
 		</ul>
 	</div>
 	<div class="w-full h-[30em] flex items-center justify-center gap-2">
@@ -57,8 +57,8 @@
 	</div>
 	{#if step <= 3}
 		<div class="flex justify-center w-full gap-2">
-			<button class="btn {step === 1 ? 'btn-disabled' : ''}" on:click={previousStep}> back </button>
-			<button class="btn btn-primary" on:click={nextStep}> continue </button>
+			<button class="btn {step === 1 ? 'btn-disabled' : ''}" on:click={previousStep}> atrás </button>
+			<button class="btn btn-primary" on:click={nextStep}> continuar </button>
 		</div>
 	{/if}
 </div>

@@ -4,7 +4,7 @@ import { writable } from 'svelte/store';
 
 const initialValueSting: string = browser
 	? window.localStorage.getItem('message') ??
-	  'Before using nutstash, please make sure you understand the risks.'
+	'Antes de utilizar nutstash, asegúrate de que entiendes los riesgos.'
 	: '';
 
 const initialValue: string = initialValueSting;

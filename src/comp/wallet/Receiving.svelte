@@ -25,7 +25,7 @@
 
 	const receive = async () => {
 		if (!isValid) {
-			toast('warning', 'The Token is not valid', 'Validation failed');
+			toast('aviso', 'El token no es válido', 'Fallo de validación');
 			return;
 		}
 
@@ -33,9 +33,9 @@
 			mint = findMintById($mints, mintId);
 			if (!mint) {
 				toast(
-					'warning',
-					'Receive tokens from this mint by adding the mint',
-					'Not connected to this mint'
+					'aviso',
+					'Recibir tokens de este mint añadiendo el mint',
+					'No conectado a este mint'
 				);
 				mintToAdd = getDecodedToken(encodedToken).token[0].mint;
 				return;
@@ -70,14 +70,14 @@
 				},
 				...state
 			]);
-			toast('success', `${amount} tokens received`, 'Tokens received!');
+			toast('éxito', `${amount} tokens recibidos`, 'Tokens recibidos!');
 			resetState();
 		} catch (error) {
 			console.error(error);
 			toast(
 				'error',
-				'Tokens are invalid or have already been redeemed',
-				'Tokens could not be received'
+				'Los tokens no son válidos o ya se han canjeado',
+				'No se han podido recibir los tokens'
 			);
 		} finally {
 			isLoading = false;
@@ -102,7 +102,7 @@
 		} catch {
 			mintId = '';
 			amount = 0;
-			toast('warning', 'could not decode Token', 'the Token is not valid');
+			toast('aviso', 'no se ha podido descodificar el token', 'el token no es válido');
 		}
 	};
 
@@ -123,7 +123,7 @@
 			const mintIndex = $mints.findIndex((m) => m.mintURL === mint.mintUrl);
 			if (mintIndex > -1) {
 				if ($mints[mintIndex].isAdded) {
-					toast('warning', 'this mint has already been added.', "Didn't add mint!");
+					toast('aviso', 'este mint ya ha sido añadido.', "No añadió el mint!");
 					return;
 				}
 
@@ -139,7 +139,7 @@
 			const keys = await mint.getKeys();
 
 			if (!validateMintKeys(keys)) {
-				toast('error', 'the keys from that mint are invalid', 'mint could not be added');
+				toast('error', 'las claves de ese mint no son válidas', 'no se pudo añadir el mint');
 				return;
 			}
 
@@ -151,13 +151,13 @@
 			};
 
 			mints.update((state) => [storeMint, ...state]);
-			toast('success', 'Mint has been added', 'Success');
+			toast('éxito', 'Se ha añadido el mint', 'Éxito!');
 			mintToAdd = '';
 		} catch {
 			toast(
 				'error',
-				'keys could not be loaded from:' + mint.mintUrl + '/keys',
-				'Could not add mint.'
+				'no se han podido cargar las claves desde:' + mint.mintUrl + '/keys',
+				'No se puede añadir el mint.'
 			);
 			throw new Error('Could not add Mint.');
 		} finally {
@@ -175,8 +175,8 @@
 		<LoadingCenter />
 	{:else}
 		<div class="flex flex-col gap-2 text-center">
-			<p class="text-xl font-bold">Receive Tokens</p>
-			<p>Paste a Cashu Token.</p>
+			<p class="text-xl font-bold">Recibir Tokens</p>
+			<p>Pega un Token Cashu.</p>
 
 			<div class="flex gap-2 items-center">
 				<label for="receive-token-input">
@@ -200,17 +200,17 @@
 					{#if isLoadingMint}
 						<button class="btn btn-disabled btn-square loading" />
 					{:else}
-						<button class="btn btn-success" on:click={trustMint}> trust this Mint </button>
+						<button class="btn btn-success" on:click={trustMint}> confiar en este Mint </button>
 					{/if}
 				</div>
 			{/if}
 			<div class="grid grid-cols-5 h-16 text-start">
 				{#if mintId}
-					<p class="font-bold">Amount:</p>
+					<p class="font-bold">Cantidad:</p>
 					<p class="col-span-4">
 						{amount === 0 ? '' : amount + ' sats'}
 					</p>
-					<p class="font-bold">From Mint:</p>
+					<p class="font-bold">De Mint:</p>
 					<p class="col-span-4">
 						{mintId ? mintId : ''}
 					</p>
@@ -221,9 +221,9 @@
 		<NostrReceiveQr />
 
 		<div class="flex  gap-2">
-			<button class="btn" on:click={resetState}>cancel</button>
+			<button class="btn" on:click={resetState}>cancelar</button>
 			<button class="btn {isValid ? 'btn-success' : 'btn-disabled'}" on:click={receive}>
-				receive</button
+				recibir</button
 			>
 		</div>
 	{/if}

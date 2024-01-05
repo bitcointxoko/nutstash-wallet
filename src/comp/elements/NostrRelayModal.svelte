@@ -20,7 +20,7 @@
 <input type="checkbox" id="nostr-relay-config" class="modal-toggle" />
 <div class="modal">
 	<div class="modal-box">
-		<h3 class="font-bold text-xl">Configure Nostr Relays</h3>
+		<h3 class="font-bold text-xl">Configurar Relays Nostr</h3>
 
 		<div class="flex flex-col gap-2">
 			<div class="w-full max-h-44 overflow-y-scroll flex flex-col gap-2 scrollbar-hide">
@@ -32,7 +32,7 @@
 				<div class="form-control">
 					<!-- svelte-ignore a11y-label-has-associated-control -->
 					<label class="label">
-						<span class="label-text">Add new Relay</span>
+						<span class="label-text">Añadir nuevo Relay</span>
 					</label>
 					<label class="input-group">
 						<span>URL</span>
@@ -59,7 +59,7 @@
 			</div>
 		</div>
 		<div class="modal-action">
-			<label for="nostr-relay-config" class="btn">Done</label>
+			<label for="nostr-relay-config" class="btn">Hecho</label>
 		</div>
 	</div>
 </div>

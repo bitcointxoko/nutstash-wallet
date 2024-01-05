@@ -3,5 +3,5 @@
 </div>
 
 <div class="col-span-4 flex gap-2">
-	<label class="btn btn-primary" for="nostr-relay-config"> Configure </label>
+	<label class="btn btn-primary" for="nostr-relay-config"> Configurar </label>
 </div>

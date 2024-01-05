@@ -16,7 +16,7 @@
 		setTimeout(() => {
 			useNostr.update((state) => !state);
 		}, 200);
-		toast('info', `relay has been ${relay.isActive ? 'activated' : 'deactivated'}`, 'Done!');
+		toast('info', `el relay se ha ${relay.isActive ? 'activado' : 'desactivado'}`, 'Hecho!');
 	};
 	const removeRelay = () => {
 		nostrRelays.update((state) => state.filter((r) => r !== relay));
@@ -24,7 +24,7 @@
 		setTimeout(() => {
 			useNostr.update((state) => !state);
 		}, 200);
-		toast('info', 'relay has been removed', 'Done!');
+		toast('info', 'el relay se ha quitado', 'Hecho!');
 	};
 </script>
 

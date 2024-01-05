@@ -33,7 +33,7 @@
 			// @ts-expect-error
 			input.select();
 			document.execCommand('copy');
-			toast('info', 'invoice has been copied to clipboard.', 'Copied!');
+			toast('info', 'la factura se ha copiado en el portapapeles.', 'Copiado!');
 		}
 	};
 
@@ -100,10 +100,10 @@
 					...state
 				]);
 
-				toast('success', `${mintAmount} Tokens have been minted.`, 'Success!');
+				toast('éxito', `Se han acuñado ${mintAmount} Tokens.`, 'Éxito!');
 				isComplete = true;
 			} else {
-				toast('error', 'No minting request was provided.', 'Could not mint Tokens.');
+				toast('error', 'No se ha facilitado ninguna solicitud de acuñación.', 'No se pueden acuñar Tokens.');
 			}
 		} catch (e) {
 			console.error(e);
@@ -150,9 +150,9 @@
 				class="flex gap-2 col-span-2 row-start-1 lg:col-span-1 flex-col items-center justify-between"
 			>
 				<div class="flex flex-col items-center">
-					<p>Pay this invoice before continuing</p>
+					<p>Paga esta factura antes de continuar</p>
 					<div>
-						<p class="font-bold">Amount:</p>
+						<p class="font-bold">Cantidad:</p>
 						<p>
 							{decode(qrCode).sections[2].value / 1000} satoshi
 						</p>
@@ -190,8 +190,8 @@
 					{/if}
 				</div>
 				<div class="flex gap-2">
-					<button class="btn btn-outline" on:click={resetState}>cancel</button>
-					<button class="btn btn-outline btn-error" on:click={abortMint}>Abort</button>
+					<button class="btn btn-outline" on:click={resetState}>cancelar</button>
+					<button class="btn btn-outline btn-error" on:click={abortMint}>Abortar</button>
 				</div>
 			</div>
 		</div>
@@ -215,8 +215,8 @@
 				</p>
 			</div>
 			<div class="modal-action">
-				<button class="btn btn-outline" on:click={resetState}>cancel</button>
-				<button class="btn btn-primary" on:click={() => mintRequest()}>request Mint</button>
+				<button class="btn btn-outline" on:click={resetState}>cancelar</button>
+				<button class="btn btn-primary" on:click={() => mintRequest()}>solicitar Mint</button>
 			</div>
 		</div>
 	{/if}

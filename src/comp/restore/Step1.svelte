@@ -1,8 +1,7 @@
 <div>
-	<h1>Welcome to the restore wizard.</h1>
-	<p>Here you can restore your Cashu tokens and mints from a nutstash_backup.json file.</p>
+	<h1>Bienvenido al asistente de restauración.</h1>
+	<p>Aquí puedes restaurar tus tokens y mints Cashu desde un archivo nutstash_backup.json.</p>
 	<p>
-		⚠️ Be warned though! It will override your current wallet data. All tokens you currently have in
-		this wallet will be lost and replaced with the backup data!
+		⚠️ Pero ten cuidado!. Anulará los datos de tu billetera actual. Todos los tokens que tengas en esta billetera se perderán y serán sustituidos por los datos de la copia de seguridad.
 	</p>
 </div>

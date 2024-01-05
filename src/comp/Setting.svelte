@@ -19,9 +19,9 @@
 
 <div class="flex flex-col justify-start gap-3 w-full">
 	<div class="grid grid-cols-5 w-full items-center gap-2 overflow-y-scroll scrollbar-hide">
-		<p class="text-xl font-bold col-span-5">Settings</p>
+		<p class="text-xl font-bold col-span-5">Configuración</p>
 		<div class="-span-1">
-			<label for="theme-dropdown">Theme:</label>
+			<label for="theme-dropdown">Tema:</label>
 		</div>
 		<div class="dropdown col-span-4" id="theme-dropdown">
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
@@ -41,22 +41,22 @@
 			</ul>
 		</div>
 		<div class="col-span-1">
-			<label for="">Backup Tokens</label>
+			<label for="">Copia de seguridad de tokens</label>
 		</div>
 		<div class="col-span-4">
 			<BackupButton />
 		</div>
 		<div class="col-span-1">
-			<label for="">Restore from Backup</label>
+			<label for="">Restaurar desde copia de seguridad</label>
 		</div>
 		<div class="col-span-4">
-			<a href="/restore" class="btn btn-primary">restore</a>
+			<a href="/restore" class="btn btn-primary">restaurar</a>
 		</div>
 		<div class="col-span-1">
-			<label for="">History</label>
+			<label for="">Historial</label>
 		</div>
 		<div class="col-span-4">
-			<a href="/history" class="btn btn-outline">History</a>
+			<a href="/history" class="btn btn-outline">Historial</a>
 		</div>
 		{#if PUBLIC_SELFHOSTED}
 			<SelfhostedSetting />
@@ -65,7 +65,7 @@
 		<div class="divider col-span-5">Cashu</div>
 
 		<div class="col-span-2">
-			<label for="">Check pending tokens</label>
+			<label for="">Comprobar tokens pendientes</label>
 		</div>
 		<div class="col-span-3 flex gap-2">
 			<input type="checkbox" class="toggle toggle-warning" bind:checked={$checkPending} />
@@ -93,7 +93,7 @@
 			</div>
 		</div>
 		<div class="col-span-2">
-			<label for="">Check non-pending tokens</label>
+			<label for="">Comprobar tokens no pendientes</label>
 		</div>
 		<div class="col-span-3 flex gap-2">
 			<input type="checkbox" class="toggle toggle-error" bind:checked={$checkNonPending} />
@@ -122,7 +122,7 @@
 		</div>
 		{#if $checkPending || $checkNonPending}
 			<div class="col-span-2">
-				<label for="">Check tokens automatically</label>
+				<label for="">Comprobar tokens automáticamente</label>
 			</div>
 			<div class="col-span-3 flex gap-2">
 				<input type="checkbox" class="toggle toggle-error" bind:checked={$checkAutomatically} />
@@ -169,11 +169,11 @@
 					</svg>
 				</button>
 			</div>
-			<p>Dangerzone</p>
+			<p>Zona peligrosa</p>
 		</div>
 		{#if isShowDangerzone}
 			<div class="col-span-1">
-				<label for="delete-history-button">Delete History</label>
+				<label for="delete-history-button">Borrar Historial</label>
 			</div>
 			<div class="col-span-4">
 				<ResetHistoryButton />

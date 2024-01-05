@@ -50,9 +50,9 @@
 				if (amountAvailable < amount + fees) {
 					isPayable = false;
 					toast(
-						'warning',
-						'This Mint does not have enough funds to pay the invoice.',
-						'Not enough funds'
+						'aviso',
+						'Este mint no tiene fondos suficientes para pagar la factura.',
+						'Fondos insuficientes'
 					);
 				} else {
 					isPayable = true;
@@ -65,7 +65,7 @@
 			amount = 0;
 			fees = 0;
 			isPayable = false;
-			toast('info', 'Paste a Lightning invoice into the input field.', 'Lightning Invoice');
+			toast('info', 'Pega una factura Lightning en el campo de entrada.', 'Factura Lightning');
 		}
 	};
 
@@ -73,7 +73,7 @@
 		isLoading = true;
 		if (!isPayable) {
 			isLoading = false;
-			toast('warning', 'Invoice is not payable', 'Invoice not paid');
+			toast('aviso', 'Factura impagable', 'Factura no pagada');
 			return;
 		}
 		const cashuMint: CashuMint = new CashuMint(mint.mintURL);
@@ -88,7 +88,7 @@
 			tokensToSend = getTokensToSend(amount + fees, getTokensForMint(mint, $token));
 		}
 		if (isCoinSelection && amount + fees > getAmountForTokenSet(tokensToSend)) {
-			toast('warning', 'not enough funds', 'Could not Send');
+			toast('aviso', 'fondos insuficientes', 'No se ha podido enviar');
 			isLoading = false;
 			return;
 		}
@@ -128,12 +128,12 @@
 				isLoading = false;
 				//re-add tokens that were sent if invoice is not paid
 				token.update((state) => [...send, ...state]);
-				toast('warning', 'Try again later', 'Invoice could not be paid!');
+				toast('aviso', 'Vuelve a intentarlo más tarde', 'No se ha podido pagar la factura!');
 				return;
 			}
 			isPaySuccess = true;
 			isLoading = false;
-			toast('success', 'Lightning Invoice has been paid successfully', 'Done!');
+			toast('éxito', 'La factura Lightning se ha pagado correctamente', 'Listo!');
 		} catch (error) {
 			//re-add tokens that were sent if error
 			isLoading = false;
@@ -159,7 +159,7 @@
 	<LoadingCenter />
 {:else if isPaySuccess}
 	<div class="flex w-full h-full flex-col items-center justify-center gap-5">
-		<p class="text-lg font-bold text-success">Lightning invoice has been paid.</p>
+		<p class="text-lg font-bold text-success">Se ha pagado la factura de Lightning.</p>
 		<button class="btn btn-success">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -182,9 +182,9 @@
 	</div>
 {:else}
 	<div class="flex flex-col gap-2">
-		<p class="text-xl font-bold">Pay Lightning Invoice</p>
+		<p class="text-xl font-bold">Pagar factura Lightning</p>
 		<div class="grid grid-cols-5 gap-2 items-center">
-			<p class="font-bold col-span-2">Invoice:</p>
+			<p class="font-bold col-span-2">Factura:</p>
 			<div class="flex gap-1 w-full col-span-3">
 				<input
 					id="melt-invoice-input"
@@ -259,7 +259,7 @@
 				</div>
 			</div>
 			<div class="grid grid-cols-5 gap-2">
-				<p class="font-bold col-span-2">Available:</p>
+				<p class="font-bold col-span-2">Disponible:</p>
 				<p class="col-span-3">{amountAvailable} sats</p>
 			</div>
 		{/if}
@@ -267,9 +267,9 @@
 		<div class="divider" />
 
 		<div class="grid grid-cols-4 items-start pt-5">
-			<p>Amount:</p>
+			<p>Cantidad:</p>
 			<p class="col-span-3">{amount} sats</p>
-			<p>Fees:</p>
+			<p>Comisiones:</p>
 			<p class="col-span-3">{fees} sats</p>
 			<div class="divider col-span-2 my-0.5" />
 			<div class="col-span-2" />
@@ -281,7 +281,7 @@
 	<CoinSelection amount={amount + fees} {mint} bind:selectedTokens bind:isCoinSelection />
 
 	<div class="flex items-center gap-2">
-		<button class="btn btn-outline" on:click={resetState}>cancel</button>
+		<button class="btn btn-outline" on:click={resetState}>cancelar</button>
 		<button
 			class="btn {isPayable &&
 			!(isCoinSelection && getAmountForTokenSet(selectedTokens) < amount + fees)
@@ -302,7 +302,7 @@
 					stroke-linejoin="round"
 					d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
 				/>
-			</svg>Pay</button
+			</svg>Pagar</button
 		>
 	</div>
 {/if}

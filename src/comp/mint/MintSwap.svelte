@@ -27,12 +27,12 @@
 
 	const prepareSwap = async () => {
 		if (swapAmount < 1) {
-			toast('warning', 'Amount has to be a number larger than 0.', 'Cannot perform swap');
+			toast('aviso', 'La cantidad debe ser superior a 0.', 'No se puede realizar el intercambio');
 			return;
 		}
 		const availableTokens = getAmountForTokenSet(getTokensForMint(swapOutMint, $token));
 		if (swapAmount > availableTokens) {
-			toast('warning', 'Not enough funds to perform this swap', 'Cannot perform swap');
+			toast('aviso', 'No hay fondos suficientes para realizar este intercambio', 'No se puede realizar el intercambio');
 			return;
 		}
 		try {
@@ -50,9 +50,9 @@
 			if (loadedFees + swapAmount > availableTokens) {
 				isPrepare = false;
 				toast(
-					'warning',
-					'Swap amount including fee exceed available amount',
-					'Cannot perform swap'
+					'aviso',
+					'La cantidad del swap, incluida la comisión, supera la cantidad disponible',
+					'No se puede realizar el intercambio'
 				);
 				return;
 			}
@@ -60,7 +60,7 @@
 			isPrepare = false;
 		} catch (e) {
 			console.error(e);
-			toast('error', 'Swap could not be prepared', 'Error occured when preparing swap');
+			toast('error', 'No se ha podido preparar el intercambio', 'Se ha producido un error al preparar el intercambio');
 			isPrepare = false;
 		}
 	};
@@ -110,8 +110,8 @@
 
 				toast(
 					'error',
-					'Something went wrong. Please try again',
-					'Error occured when performing swap'
+					'Algo ha ido mal. Vuelve a intentarlo',
+					'Se ha producido un error al realizar el intercambio'
 				);
 				return;
 			} else {
@@ -126,14 +126,14 @@
 				updateMintKeys(swapOutMint, newKeys);
 			}
 			token.update((state) => [...newProofs, ...state]);
-			toast('success', 'The swap has successfully been completed', 'Swap complete');
+			toast('éxito', 'El intercambio se ha completado con éxito', 'Intercambio completado');
 			isPerform = false;
 			isComplete = true;
 			//todo history
 		} catch (e) {
 			isPerform = false;
 			console.error(e);
-			toast('error', 'Swap could not be performed', 'Error occured when performing swap');
+			toast('error', 'No se ha podido realizar el intercambio', 'Se ha producido un error al realizar el intercambio');
 		}
 	};
 
@@ -155,7 +155,7 @@
 	<!-- content here -->
 
 	<div class="flex w-full h-full flex-col items-center justify-center gap-5">
-		<p class="text-lg font-bold text-success">Tokens have been swapped.</p>
+		<p class="text-lg font-bold text-success">Los tokens han sido intercambiados.</p>
 		<button class="btn btn-success">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -179,11 +179,10 @@
 {:else}
 	<!-- else content here -->
 	<div class="flex flex-col gap-2">
-		<p class="text-xl font-bold">Inter-Mint Swap</p>
-		<p class="">Swap tokens from one mint for tokens from another mint.</p>
+		<p class="text-xl font-bold">Intercambio entre Mints</p>
+		<p class="">Cambiar tokens de un Mint por tokens de otro Mint.</p>
 		<p class="">
-			⚠️ For a brief moment, you will be trusting two mints at the same time. There is things that
-			can go wrong. Use at own risk.
+			⚠️ Por un breve momento, confiarás en dos Mints al mismo tiempo. Hay cosas que pueden salir mal. Utilízalas bajo tu propia responsabilidad.
 		</p>
 		<div class="grid grid-cols-5 items-center gap-4">
 			<div class="col-span-2">

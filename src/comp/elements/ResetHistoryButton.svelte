@@ -5,7 +5,7 @@
 
 	const resetHistory = () => {
 		history.set([]);
-		toast('info', 'history has been reset', 'Done!');
+		toast('info', 'el historial se ha borrado', 'Hecho!');
 		if (browser) {
 			// @ts-expect-error
 			document.getElementById('reset-history-modal').checked = false;
@@ -13,18 +13,18 @@
 	};
 </script>
 
-<label for="reset-history-modal" class="btn btn-error">Reset History</label>
+<label for="reset-history-modal" class="btn btn-error">Borrar historial</label>
 
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id="reset-history-modal" class="modal-toggle" />
 <div class="modal">
 	<div class="modal-box">
 		<p class="py-4">
-			Are you sure you want to delete your history? You will keep your Tokens and Mints.
+			¿Estás seguro de que quieres borrar tu historial? Conservarás tus tokens y mints.
 		</p>
 		<div class="modal-action">
-			<label for="reset-history-modal" class="btn btn-outline">cancel</label>
-			<button on:click={resetHistory} class="btn btn-error">Delete</button>
+			<label for="reset-history-modal" class="btn btn-outline">cancelar</label>
+			<button on:click={resetHistory} class="btn btn-error">Borrar</button>
 		</div>
 	</div>
 </div>

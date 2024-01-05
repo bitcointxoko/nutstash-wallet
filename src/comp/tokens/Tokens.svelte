@@ -18,7 +18,7 @@
 		class="tab tab-bordered {activeTab === 'history' ? 'tab-active' : ''}"
 		on:click={() => changeTab('history')}
 	>
-		History
+		Historial
 	</div>
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div
@@ -33,7 +33,7 @@
 			class="flex gap-2 tab tab-bordered {activeTab === 'inbox' ? 'tab-active' : ''}"
 			on:click={() => changeTab('inbox')}
 		>
-			Inbox
+			Bandeja de Entrada
 			{#if $nostrMessages.filter((nM) => {
 				return !nM.isAccepted;
 			}).length > 0}

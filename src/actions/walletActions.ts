@@ -26,7 +26,7 @@ export const updateMintKeys = (mint: Mint, newKeys: MintKeys) => {
 	if (!toBeUpdated) {
 		toast(
 			'error',
-			'the keys of this mint have changed, but could not be updated in the wallet',
+			'las claves de esta ceca han cambiado, pero no se han podido actualizar en la billetera',
 			'Error'
 		);
 		throw new Error('could not update mint keys');
@@ -35,5 +35,5 @@ export const updateMintKeys = (mint: Mint, newKeys: MintKeys) => {
 	const newKeyset = deriveKeysetId(newKeys);
 	toBeUpdated.keysets = [newKeyset, ...toBeUpdated.keysets];
 	mints.set(allMints);
-	toast('info', 'the new keyset ID is: ' + newKeyset, 'The keys of this mint have rotated');
+	toast('info', 'el nuevo ID del juego de llaves es: ' + newKeyset, 'Las llaves de este mint han girado');
 };

@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-	<head>
-		<link rel="manifest" href="/manifest.json" />
-		<link rel="apple-touch-icon" href="/maskable_icon_x192.png" />
-		<meta name="theme-color" content="#212121" />
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+
+<head>
+	<link rel="manifest" href="/manifest.json" />
+	<link rel="apple-touch-icon" href="/maskable_icon_x192.png" />
+	<meta name="theme-color" content="#212121" />
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
+	<meta name="viewport" content="width=device-width" />
+	%sveltekit.head%
+	<title>Nutstash</title>
+	<meta property="description"
+		content="Nutstash es una billetera Lightning de custodia para tu navegador, que utiliza el protocolo cashu para permitirte enviar y recibir sats de forma inmediata, anónima y privada." />
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
 </html>

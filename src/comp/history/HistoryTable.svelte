@@ -14,10 +14,10 @@
 	<table class="table table-compact table-zebra w-full">
 		<thead>
 			<tr>
-				<th>Action</th>
-				<th>Amount</th>
-				<th>Date</th>
-				<th>Details</th>
+				<th>Acción</th>
+				<th>Cantidad</th>
+				<th>Fecha</th>
+				<th>Detalles</th>
 			</tr>
 		</thead>
 		<tbody class="max-h-1 overflow-y-scroll scrollbar-hide">
@@ -27,14 +27,14 @@
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<tr class="">
 				<td colspan="2" class="cursor-pointer w-5 hover:bg-base-200" on:click={loadMore}>
-					load more
+					cargar más
 				</td>
 				<td
 					colspan="2"
 					class="cursor-pointer w-full hover:bg-base-200"
 					on:click={() => (page = 999999)}
 				>
-					load all
+					cargar todo
 				</td>
 			</tr>
 		</tbody>

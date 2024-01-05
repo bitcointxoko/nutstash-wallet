@@ -6,7 +6,7 @@
 </script>
 
 <div>
-	<h2>You are about to import the following into your wallet:</h2>
+	<h2>Estás a punto de importar lo siguiente a tu billetera:</h2>
 	<div class="w-full h-full flex flex-col gap-2">
 		<div class="card w-96 bg-base-100 shadow-xl max-h-96 overflow-scroll scrollbar-hide">
 			<div class="card-body">
@@ -26,7 +26,7 @@
 							{proof.amount} sats
 						</p>
 						<p>
-							from {proof.id}
+							de {proof.id}
 						</p>
 					</div>
 				{/each}
