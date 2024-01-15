@@ -197,7 +197,7 @@
 		</div>
 	{:else}
 		<div class="flex flex-col gap-2">
-			<h3 class="font-bold text-lg">Request minting of new tokens:</h3>
+			<h3 class="font-bold text-lg">Solicitar la acuñación de nuevos tokens:</h3>
 			<div class="flex gap-2 items-center">
 				<input
 					type="number"
